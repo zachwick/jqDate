@@ -1,0 +1,69 @@
+.jqdate-wrapper {
+    position:relative;
+    height:423px;
+    width:413px;
+    border:solid 1px black;
+}
+
+.jqdate-header {
+    position:relative;
+    height:74px;
+    width:100%;
+    border-bottom:solid 1px black;
+}
+
+.jqdate-body {
+    position:relative;
+    height:348px;
+    width:100%;
+    background:red;
+}
+
+.jqdate-date-nav-button {
+    width:41px;
+    height:100%;
+    cursor:pointer;
+    background:#A7A9AC;
+}
+.jqdate-date-nav-button:hover {
+    background:#0093D9;
+}
+
+#next-week-button {
+    position:relative;
+    display:inline-block;
+    float:right;
+}
+
+#prev-week-button {
+    position:relative;
+    display:inline-block;
+    float:left;
+    border-right:solid 1px #000000;
+}
+
+.jqdate-header-date {
+    position:relative;
+    display:inline-block;
+    border-right:solid 1px #000000;
+    height:100%;
+    width:65px;
+    cursor:pointer;
+    background:#FFFFFF;
+    color:#000000;
+}
+.jqdate-header-date:hover {
+    background:#C4E3EF;
+    color:#000000;
+    border-right:solid 1px #005983;
+}
+.jqdate-header-date.disabled {
+    background:#E7E8E9;
+    color:#A7A9AC;
+    border-right:solid 1px #000000;
+}
+.jqdate-header-date.selected {
+    background:#4EACCE;
+    color:#FFFFFF;
+    border-right:solid 1px #005983;
+}
