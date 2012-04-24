@@ -9,8 +9,17 @@
 		nextImg:"../CuckooCoffee/static/img/arrow-nextbutton-",
 		dateImg:"../CuckooCoffee/static/img/arrow-timeslot-button.png"
 	    },options);
+
 	    //Global vars
 	    var weekCounter = 0;
+	    jqDays = new Array();
+	    jqDays[0] = new Array();
+	    jqDays[1] = new Array();
+	    jqDays[2] = new Array();
+	    jqDays[3] = new Array();
+	    jqDays[4] = new Array();
+	    jqDays[5] = new Array();
+
 	    //Methods
 	    activateTimes = function(row) {
 		$("#jqdate-time-table-row-"+row).children("td").each(function() {
@@ -89,6 +98,7 @@
 			} else {
 			    var dispDate = ((startDate.getDate()+i) % modder);
 			}
+			jqDays[weekCounter+1][i] = dispDate;
 			$("#jqdate-header-num-"+i).html(dispDate);
 		    }
 		    weekCounter = weekCounter + 1;
@@ -97,55 +107,8 @@
 	    getPrevWeek = function() {
 		if (weekCounter > 0) {
 		    removeSelection();
-		    var firstDate = parseInt($("#jqdate-wrapper").children("#jqdate-header").children(".jqdate-header-date").first().children(".jqdate-header-num").html());
-		    var date = new Date();
-		    switch(date.getMonth()) {
-		    case 0:
-			var modder = 31+1;
-			break;
-		    case 1:
-			var modder = 28+1;
-			//What about leap years?
-			break;
-		    case 2:
-			var modder = 31+1;
-			break;
-		    case 3:
-			var modder = 30+1;
-			break;
-		    case 4:
-			var modder = 31+1;
-			break;
-		    case 5:
-			var modder = 30+1;
-			break;
-		    case 6:
-			var modder = 31+1;
-			break;
-		    case 7:
-			var modder = 31+1;
-			break;
-		    case 8:
-			var modder = 30+1;
-			break;
-		    case 9:
-			var modder = 31+1;
-			break;
-		    case 10:
-			var modder = 30+1;
-			break;
-		    case 11:
-			break;
-			var modder = 31+1;
-		    }
-		    var firstDate = new Date(date.getFullYear(),date.getMonth(),firstDate-7);
 		    for (var i=0;i<5;i++) {
-			if ((firstDate.getDate()+i) >= modder) {
-			    var dispDate = ((firstDate.getDate()+i) % modder)+1;
-			} else {
-			    var dispDate = ((firstDate.getDate()+i) % modder);
-			}
-			$("#jqdate-header-num-"+i).html(dispDate);
+			$("#jqdate-header-num-"+i).html(jqDays[weekCounter-1][i]);
 		    }
 		    weekCounter = weekCounter - 1;
 		}
@@ -200,6 +163,7 @@
 		}
 		$(this).children("#jqdate-wrapper").children("#jqdate-header").children("#jqdate-header-date-"+i).append("<div class='jqdate-header-str' id='jqdate-header-str-"+i+"'>"+dateStr+"</div>");
 		$(this).children("#jqdate-wrapper").children("#jqdate-header").children("#jqdate-header-date-"+i).append("<div class='jqdate-header-num' id='jqdate-header-num-"+i+"'>"+dateNum+"</div>");
+		jqDays[0][i] = dateNum;
 		if (i == 1) {
 		    $("#jqdate-header-date-"+i).addClass("selected");
 		}
