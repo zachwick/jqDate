@@ -5,9 +5,9 @@
 		width:"450px",
 		height:"300px",
 		date:new Date(),
-		prevImg:"../CuckooCoffee/static/img/arrow-calendarbutton-",
-		nextImg:"../CuckooCoffee/static/img/arrow-nextbutton-",
-		dateImg:"../CuckooCoffee/static/img/arrow-timeslot-button.png"
+		prevImg:"",
+		nextImg:"",
+		dateImg:""
 	    },options);
 
 	    //Global vars
@@ -218,6 +218,7 @@
 		    });
 		});
 	    });
+	    
 	},
 	hide : function () {
 
