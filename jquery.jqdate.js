@@ -126,7 +126,7 @@
 	    $(this).append("<div class='jqdate-wrapper' id='jqdate-wrapper'></div>");
 	    $(this).children("#jqdate-wrapper").append("<div class='jqdate-header' id='jqdate-header'></div>");
 	    $(this).children("#jqdate-wrapper").append("<div class='jqdate-body' id='jqdate-body'></div>");
-	    $(this).children("#jqdate-wrapper").children("#jqdate-header").append("<div class='jqdate-date-nav-button' id='prev-week-button'></div>");
+	    $(this).children("#jqdate-wrapper").children("#jqdate-header").append("<div class='jqdate-date-nav-button' id='prev-week-button'><img class='date-nav-button-img' id='prev-week-button-img' src='"+options.prevImg+"-inactive.png"+"'/></div>");
 	    var confDate = new Date();
 	    var dateOffset = 0 - confDate.getDay();
 	    for (var i=0;i<5;i++) {
@@ -169,12 +169,20 @@
 		}
 		//dateNums = [date.getDate()-1,date.getDate(),date.getDate()+1,date.getDate()+2,date.getDate()+3];
 	    }
-	    $(this).children("#jqdate-wrapper").children("#jqdate-header").append("<div class='jqdate-date-nav-button' id='next-week-button'></div>");
+	    $(this).children("#jqdate-wrapper").children("#jqdate-header").append("<div class='jqdate-date-nav-button' id='next-week-button'><img class='date-nav-button-img' id='next-week-button-img' src='"+options.nextImg+"-inactive.png"+"'/></div>");
 	    $(this).children("#jqdate-wrapper").children("#jqdate-header").children("#next-week-button").bind("click",function() {
 		getNextWeek();
+	    }).bind("mouseover",function() {
+		$("#next-week-button-img").attr("src",options.nextImg+"-hover.png");
+	    }).bind("mouseleave",function() {
+		$("#next-week-button-img").attr("src",options.nextImg+"-inactive.png");
 	    });
 	    $(this).children("#jqdate-wrapper").children("#jqdate-header").children("#prev-week-button").bind("click",function() {
 		getPrevWeek();
+	    }).bind("mouseover",function() {
+		$("#prev-week-button-img").attr("src",options.prevImg+"-hover.png");
+	    }).bind("mouseleave",function() {
+		$("#prev-week-button-img").attr("src",options.prevImg+"-inactive.png");
 	    });
 	    var table_html = "<table id='jqdate-time-table' class='jqdate-time-table'>";
 	    for (var hour=8;hour<18;hour++) {
@@ -182,11 +190,6 @@
 		table_html += "<tr class='jqdate-time-table-row' id='jqdate-time-table-row-"+hour+"'>";
 		for (var col=0;col<4;col++) {
 		    table_html += "<td class='jqdate-time-table-col-"+col+"' id='jqdate-time-table-col-"+hour+"-"+minutes+"' ";
-		    if (col == 0) {
-			table_html += " onclick='activateTimes("+hour+");'><img src='"+options.dateImg+"'/>";
-		    } else {
-			table_html += "'>";
-		    }
 		    var display_hour = hour;
 		    var display_meridian = "AM";
 		    var display_minutes = minutes;
@@ -202,7 +205,11 @@
 		    } else {
 			display_minutes = minutes;
 		    }
-		    table_html += display_hour+":"+display_minutes+display_meridian;
+		    if (col == 0) {
+			table_html += " onclick='activateTimes("+hour+");'>"+display_hour+":"+display_minutes+display_meridian+"<img src='"+options.dateImg+"'/>";
+		    } else {
+			table_html += "'>"+display_hour+":"+display_minutes+display_meridian;
+		    }
                     table_html += "</td>";
 		    minutes += 15;
 		}

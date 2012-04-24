@@ -3,6 +3,10 @@
     font-family:"Droid Sans";
 }
 
+td {
+    padding:0px !important;
+}
+
 .jqdate-wrapper {
     position:relative;
     height:423px;
@@ -87,6 +91,7 @@
 .jqdate-time-table {
     width:100%;
     height:100%;
+    border-collapse:collapse;
 }
 
 .jqdate-time-table-row td {
@@ -129,7 +134,14 @@
     background:#E7E8E9;
     border:solid 1px #6D6D6D;
 }
-.jqdate-time-table-col-0.active.selected {
 
+.date-nav-button-img {
+    position:absolute;
+    top:23px;
 }
-
+#prev-week-button-img {
+    left:10px;
+}
+#next-week-button-img {
+    right:10px;
+}
