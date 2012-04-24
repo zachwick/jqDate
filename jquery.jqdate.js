@@ -57,8 +57,24 @@
 			var modder = 31+1;
 			break;
 		    case 1:
-			var modder = 28+1;
 			//What about leap years?
+			if (date.getFullYear() % 4 == 0) {
+			    if (date.getFullYear() % 100 == 0) {
+				if (date.getFullYear() % 400 == 0) {
+				    //leap year
+				    var modder = 29 + 1;
+				} else {
+				    // NOT leap year
+				    var modder = 28 + 1;
+				}
+			    } else {
+				// not divisible by 100 -> leap year
+				var modder = 29 + 1;
+			    }
+			} else {
+			    // NOT leap year
+			    var modder = 28+1;
+			}
 			break;
 		    case 2:
 			var modder = 31+1;
