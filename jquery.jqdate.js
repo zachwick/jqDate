@@ -128,13 +128,13 @@
 	    $(this).children("#jqdate-wrapper").append("<div class='jqdate-body' id='jqdate-body'></div>");
 	    $(this).children("#jqdate-wrapper").children("#jqdate-header").append("<div class='jqdate-date-nav-button' id='prev-week-button'><img class='date-nav-button-img' id='prev-week-button-img' src='"+options.prevImg+"-inactive.png"+"'/></div>");
 	    var confDate = new Date();
-	    var dateOffset = 0 - confDate.getDay();
+	    var dateOffset = 0 - (confDate.getDay()-1);
 	    for (var i=0;i<5;i++) {
 		$(this).children("#jqdate-wrapper").children("#jqdate-header").append("<div class='jqdate-header-date' id='jqdate-header-date-"+i+"' onclick='doSelect("+i+");'></div>");
 		//Put in header dates here
-		var date = new Date();
-		var dateNum = date.getDate()+(i-1)-dateOffset;
-		var dateStrNum = date.getDay()+(i-1)-dateOffset;
+		var date = new Date(confDate.getFullYear(),confDate.getMonth(),confDate.getDate()+i+dateOffset);
+		var dateNum = date.getDate();
+		var dateStrNum = date.getDay();
 		switch (dateStrNum) {
 		case 0:
 		    var dateStr = "Sun";
@@ -164,7 +164,7 @@
 		$(this).children("#jqdate-wrapper").children("#jqdate-header").children("#jqdate-header-date-"+i).append("<div class='jqdate-header-str' id='jqdate-header-str-"+i+"'>"+dateStr+"</div>");
 		$(this).children("#jqdate-wrapper").children("#jqdate-header").children("#jqdate-header-date-"+i).append("<div class='jqdate-header-num' id='jqdate-header-num-"+i+"'>"+dateNum+"</div>");
 		jqDays[0][i] = dateNum;
-		if (i == 1) {
+		if (dateNum == confDate.getDate()+1) {
 		    $("#jqdate-header-date-"+i).addClass("selected");
 		}
 		//dateNums = [date.getDate()-1,date.getDate(),date.getDate()+1,date.getDate()+2,date.getDate()+3];
