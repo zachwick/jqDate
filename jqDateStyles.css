@@ -72,6 +72,18 @@
     border-right:solid 1px #005983;
 }
 
+.jqdate-header-str {
+    width:100%;
+    text-align:center;
+    margin-top:5px;
+}
+
+.jqdate-header-num {
+    width:100%;
+    text-align:center;
+    font-size:36px;
+}
+
 .jqdate-time-table {
     width:100%;
     height:100%;
@@ -97,7 +109,11 @@
     border:solid 1px #005983;
     color:#000000;
 }
-
+.jqdate-time-table-col-1.active.selected,.jqdate-time-table-col-2.active.selected,.jqdate-time-table-col-3.active.selected {
+    background:#4EACCE;
+    color:#FFFFFF:
+    border:solid 1px #005983;
+}
 .jqdate-time-table-col-0 {
     background:#FFFFFF;
     color:#000000;
@@ -112,5 +128,8 @@
 .jqdate-time-table-col-0.active {
     background:#E7E8E9;
     border:solid 1px #6D6D6D;
+}
+.jqdate-time-table-col-0.active.selected {
+
 }
 
