@@ -43,9 +43,53 @@
 		    removeSelection();
 		    var lastDate = parseInt($("#jqdate-wrapper").children("#jqdate-header").children(".jqdate-header-date").last().children(".jqdate-header-num").html());
 		    var date = new Date();
+		    switch(date.getMonth()) {
+		    case 0:
+			var modder = 31+1;
+			break;
+		    case 1:
+			var modder = 28+1;
+			//What about leap years?
+			break;
+		    case 2:
+			var modder = 31+1;
+			break;
+		    case 3:
+			var modder = 30+1;
+			break;
+		    case 4:
+			var modder = 31+1;
+			break;
+		    case 5:
+			var modder = 30+1;
+			break;
+		    case 6:
+			var modder = 31+1;
+			break;
+		    case 7:
+			var modder = 31+1;
+			break;
+		    case 8:
+			var modder = 30+1;
+			break;
+		    case 9:
+			var modder = 31+1;
+			break;
+		    case 10:
+			var modder = 30+1;
+			break;
+		    case 11:
+			break;
+			var modder = 31+1;
+		    }
 		    var startDate = new Date(date.getFullYear(),date.getMonth(),lastDate+3);
 		    for (var i=0;i<5;i++) {
-			$("#jqdate-header-num-"+i).html(startDate.getDate()+i);
+			if ((startDate.getDate()+i) >= modder) {
+			    var dispDate = ((startDate.getDate()+i) % modder)+1;
+			} else {
+			    var dispDate = ((startDate.getDate()+i) % modder);
+			}
+			$("#jqdate-header-num-"+i).html(dispDate);
 		    }
 		    weekCounter = weekCounter + 1;
 		}
@@ -55,9 +99,53 @@
 		    removeSelection();
 		    var firstDate = parseInt($("#jqdate-wrapper").children("#jqdate-header").children(".jqdate-header-date").first().children(".jqdate-header-num").html());
 		    var date = new Date();
+		    switch(date.getMonth()) {
+		    case 0:
+			var modder = 31+1;
+			break;
+		    case 1:
+			var modder = 28+1;
+			//What about leap years?
+			break;
+		    case 2:
+			var modder = 31+1;
+			break;
+		    case 3:
+			var modder = 30+1;
+			break;
+		    case 4:
+			var modder = 31+1;
+			break;
+		    case 5:
+			var modder = 30+1;
+			break;
+		    case 6:
+			var modder = 31+1;
+			break;
+		    case 7:
+			var modder = 31+1;
+			break;
+		    case 8:
+			var modder = 30+1;
+			break;
+		    case 9:
+			var modder = 31+1;
+			break;
+		    case 10:
+			var modder = 30+1;
+			break;
+		    case 11:
+			break;
+			var modder = 31+1;
+		    }
 		    var firstDate = new Date(date.getFullYear(),date.getMonth(),firstDate-7);
 		    for (var i=0;i<5;i++) {
-			$("#jqdate-header-num-"+i).html(firstDate.getDate()+i);
+			if ((firstDate.getDate()+i) >= modder) {
+			    var dispDate = ((firstDate.getDate()+i) % modder)+1;
+			} else {
+			    var dispDate = ((firstDate.getDate()+i) % modder);
+			}
+			$("#jqdate-header-num-"+i).html(dispDate);
 		    }
 		    weekCounter = weekCounter - 1;
 		}
